@@ -540,10 +540,10 @@ class Employees extends Authenticated_Controller
 		$this->form_validation->set_rules('language', lang('bf_language'), 'required|trim|strip_tags|xss_clean');
 		$this->form_validation->set_rules('timezones', lang('bf_timezone'), 'required|trim|strip_tags|max_length[4]|xss_clean');
 
-		if (has_permission('Bonfire.Roles.Manage') && has_permission('Permissions.'.$cur_role_name.'.Manage'))
+		/*if (has_permission('Bonfire.Roles.Manage') && has_permission('Permissions.'.$cur_role_name.'.Manage'))
 		{
 			$this->form_validation->set_rules('role_id', lang('us_role'), 'required|trim|strip_tags|max_length[2]|is_numeric|xss_clean');
-		}
+		}*/
 
 		$meta_data = array();
 
@@ -553,7 +553,7 @@ class Employees extends Authenticated_Controller
 				|| (isset($field['admin_only']) && $field['admin_only'] === TRUE
 					&& isset($this->current_user) && $this->current_user->role_id == 1))
 			{
-				$this->form_validation->set_rules($field['name'], $field['label'], $field['rules']);
+				//$this->form_validation->set_rules($field['name'], $field['label'], $field['rules']);
 
 				$meta_data[$field['name']] = $this->input->post($field['name']);
 			}
